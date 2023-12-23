@@ -33,8 +33,8 @@ public class CachedDocument implements Document {
     private void toTable(String result) {
         try (Connection CONNECTION = DriverManager.getConnection(dbURL);
              Statement STATEMENT = CONNECTION.createStatement()) {
-            String query = "INSERT INTO table (identifier, result) VALUES" +
-                    "(?, ?)";
+            String query = "INSERT INTO table (identifier, result) VALUES"
+                    + "(?, ?)";
             PreparedStatement preparedStatement =
                     CONNECTION.prepareStatement(query);
             preparedStatement.setString(1, identifier);
