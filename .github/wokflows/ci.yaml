@@ -18,9 +18,8 @@ jobs:
           java-version: '17'
           distribution: 'adopt'
       - name: Lint Code Base
-        uses: github/super-linter/slim@v4
+        uses:  github/super-linter/slim@v4
         env:
           DEFAULT_BRANCH: master
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           JAVA_FILE_NAME: checkstyle.xml
-          FILTER_REGEX_INCLUDE: ".*src/.*"

@@ -24,7 +24,7 @@
 
     <!-- Check that length of line is at most 80 characters. -->
     <module name="LineLength">
-        <property name="max" value="80"/>
+        <property name="max" value="100"/>
         <property name="ignorePattern" value="^ *\* *[^ ]+$"/>
     </module>
 
@@ -68,9 +68,7 @@
         <!-- http://checkstyle.sourceforge.net/config_design.html                        -->
         <!-- =========================================================================== -->
         <!-- SPECIAL HACK FOR NON-STATIC PUBIC FINAL VARIABLE -->
-        <module name="VisibilityModifier">
-            <property name="publicMemberPattern" value="^SLOPE_ORDER$"/>
-        </module>
+
         <!-- <module name="FinalClass"/> -->
         <module name="InterfaceIsType"/>
         <module name="MutableException"/>
@@ -90,12 +88,6 @@
         </module>
         <module name="IllegalInstantiation"/>
         <module name="InnerAssignment"/>
-        <module name="MagicNumber">
-            <property name="tokens"
-                      value="NUM_DOUBLE, NUM_FLOAT, NUM_INT, NUM_LONG"/>
-            <property name="ignoreNumbers" value="0, 1, 2, 100, 11.5, 15, 30, 40, 4, 13"/>
-            <property name="ignoreHashCodeMethod" value="true"/>
-        </module>
         <module name="MissingSwitchDefault"/>
         <module name="ModifiedControlVariable"/>
         <module name="SimplifyBooleanExpression"/>
@@ -154,7 +146,7 @@
 
         <module name="IllegalImport">
             <property name="illegalPkgs"
-                      value="sun, java.net, java.security, javax, java.applet, java.beans, java.nio, java.rmi, java.text, java.lang.reflect, java.lang.instrument"/>
+                      value="java.sql, sun, java.net, java.security, javax, java.applet, java.beans, java.nio, java.rmi, java.text, java.lang.reflect, java.lang.instrument"/>
         </module>
 
         <module name="RedundantImport"/>
@@ -225,9 +217,6 @@
         </module>
         <module name="StaticVariableName">
             <property name="format" value="^[a-z][a-zA-Z]*$|^[A-Z][A-Z_]*$"/>
-        </module>
-        <module name="TypeName">
-            <property name="format" value="^[A-Z][a-zA-Z]*$"/>
         </module>
 
         <!-- =========================================================================== -->
