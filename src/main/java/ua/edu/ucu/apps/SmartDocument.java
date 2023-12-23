@@ -17,7 +17,12 @@ import java.util.List;
 
 @AllArgsConstructor
 public class SmartDocument implements Document {
-    public String gcsPath;
+    private String gcsPath;
+
+    public String getGcsPath() {
+        return gcsPath;
+    }
+
 
     @SneakyThrows
     public String parse() {
