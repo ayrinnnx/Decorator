@@ -33,8 +33,10 @@ public class CachedDocument implements Document {
     private void toTable(String result) {
         try (Connection CONNECTION = DriverManager.getConnection(dbURL);
              Statement STATEMENT = CONNECTION.createStatement()) {
-            String query = "INSERT INTO table (identifier, result) VALUES (?, ?)";
-            PreparedStatement preparedStatement = CONNECTION.prepareStatement(query);
+            String query = "INSERT INTO table (identifier, result) VALUES" +
+                    "(?, ?)";
+            PreparedStatement preparedStatement =
+                    CONNECTION.prepareStatement(query);
             preparedStatement.setString(1, identifier);
             preparedStatement.setString(2, result);
         } catch (SQLException e) {
@@ -46,7 +48,8 @@ public class CachedDocument implements Document {
         try (Connection CONNECTION = DriverManager.getConnection(dbURL);
              Statement STATEMENT = CONNECTION.createStatement()) {
             String query = "SELECT result FROM table WHERE identifier = ?";
-            PreparedStatement preparedStatement = CONNECTION.prepareStatement(query);
+            PreparedStatement preparedStatement =
+                    CONNECTION.prepareStatement(query);
             preparedStatement.setString(1, identifier);
 
             ResultSet resultSet = preparedStatement.executeQuery();
