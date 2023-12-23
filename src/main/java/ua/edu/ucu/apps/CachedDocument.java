@@ -5,7 +5,7 @@ import java.sql.*;
 public class CachedDocument implements Document {
     private Document document;
     private String identifier;
-    private String DB_URL = "jdbc:sqlite:/Users/my.bd";
+    private String dbURL = "jdbc:sqlite:/Users/my.bd";
 
     public CachedDocument(String path, String documentIdentifier) {
         this.document = new SmartDocument(path);
@@ -26,10 +26,10 @@ public class CachedDocument implements Document {
     }
 
     private void toTable(String result) {
-        try (Connection connection = DriverManager.getConnection(DB_URL);
-             Statement statement = connection.createStatement()) {
+        try (Connection CONNECTION = DriverManager.getConnection(dbURL);
+             Statement STATEMENT = CONNECTION.createStatement()) {
             String query = "INSERT INTO table (identifier, result) VALUES (?, ?)";
-            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            PreparedStatement preparedStatement = CONNECTION.prepareStatement(query);
             preparedStatement.setString(1, identifier);
             preparedStatement.setString(2, result);
         } catch (SQLException e) {
@@ -38,10 +38,10 @@ public class CachedDocument implements Document {
     }
 
     private String fromTable() {
-        try (Connection connection = DriverManager.getConnection(DB_URL);
-             Statement statement = connection.createStatement()) {
+        try (Connection CONNECTION = DriverManager.getConnection(dbURL);
+             Statement STATEMENT = CONNECTION.createStatement()) {
             String query = "SELECT result FROM table WHERE identifier = ?";
-            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            PreparedStatement preparedStatement = CONNECTION.prepareStatement(query);
             preparedStatement.setString(1, identifier);
 
             ResultSet resultSet = preparedStatement.executeQuery();
